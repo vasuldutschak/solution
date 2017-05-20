@@ -1,0 +1,18 @@
+CREATE TABLE Movie(
+  id INTEGER IDENTITY PRIMARY KEY,
+  title VARCHAR(30),
+  director VARCHAR(100)
+);
+CREATE TABLE User(
+  id INTEGER IDENTITY PRIMARY KEY,
+  name VARCHAR(50)
+);
+CREATE TABLE Rating(
+  id INTEGER IDENTITY PRIMARY KEY,
+  user_id INTEGER,
+  movie_Id INTEGER,
+  rating INTEGER,
+  rating_date DATE
+);
+ALTER TABLE Rating ADD CONSTRAINT fkRatingUser FOREIGN KEY (user_id) REFERENCES User(id);
+ALTER TABLE Rating ADD CONSTRAINT fkRatingMovie FOREIGN KEY (movie_id) REFERENCES Movie(id);
